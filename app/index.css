@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground: #171717;
+    --background: #737373;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground: #737373;
+        --background: #171717;
+    }
+}
+
+@layer components {
+    body {
+        font-family: 'Inter', sans-serif;
+        color: var(--foreground);
+        background: var(--background);
+    }
+
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
