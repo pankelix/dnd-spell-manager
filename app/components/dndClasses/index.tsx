@@ -1,0 +1,8 @@
+export {default as Bard} from './Bard'
+export {default as Cleric} from './Cleric'
+export {default as Druid} from './Druid'
+export {default as Paladin} from './Paladin'
+export {default as Ranger} from './Ranger'
+export {default as Sorcerer} from './Sorcerer'
+export {default as Warlock} from './Warlock'
+export {default as Wizard} from './Wizard'
