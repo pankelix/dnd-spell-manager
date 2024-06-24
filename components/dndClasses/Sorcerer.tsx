@@ -1,6 +1,6 @@
 
 interface SorcererProps {
-
+    spellLevel: string
 }
 
 const Sorcerer: React.FC<SorcererProps> = (props) => {

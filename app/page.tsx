@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react";
-import { CoffeeIcon, GitHubIcon, MoonIcon, SunIcon } from "./components/icons"
-import { Bard, Cleric, Druid, Paladin, Ranger, Sorcerer, Warlock, Wizard } from './components/dndClasses'
+import { CoffeeIcon, GitHubIcon, MoonIcon, SunIcon } from "../components/icons"
+import { Bard, Cleric, Druid, Paladin, Ranger, Sorcerer, Warlock, Wizard } from '../components/dndClasses'
 
 export default function Home() {
   const dndClasses = [
@@ -13,8 +13,8 @@ export default function Home() {
     'Cantrip', '1', '2', '3', '4', '5', '6', '7', '8'
   ]
 
-  const [dndClass, setDndClass] = useState('')
-  const [spellLevel, setSpellLevel] = useState('')
+  const [dndClass, setDndClass] = useState('Bard')
+  const [spellLevel, setSpellLevel] = useState('Cantrip')
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true)
 
   const handleDndClassClick = (chosenClass: string) => {
@@ -64,14 +64,14 @@ export default function Home() {
       </nav>
 
       <main>
-        {dndClass === 'Bard' && <Bard />}
-        {dndClass === 'Cleric' && <Cleric />}
-        {dndClass === 'Druid' && <Druid />}
-        {dndClass === 'Paladin' && <Paladin />}
-        {dndClass === 'Ranger' && <Ranger />}
-        {dndClass === 'Sorcerer' && <Sorcerer />}
-        {dndClass === 'Warlock' && <Warlock />}
-        {dndClass === 'Wizard' && <Wizard />}
+        {dndClass === 'Bard' && <Bard spellLevel={spellLevel}/>}
+        {dndClass === 'Cleric' && <Cleric spellLevel={spellLevel}/>}
+        {dndClass === 'Druid' && <Druid spellLevel={spellLevel}/>}
+        {dndClass === 'Paladin' && <Paladin spellLevel={spellLevel}/>}
+        {dndClass === 'Ranger' && <Ranger spellLevel={spellLevel}/>}
+        {dndClass === 'Sorcerer' && <Sorcerer spellLevel={spellLevel}/>}
+        {dndClass === 'Warlock' && <Warlock spellLevel={spellLevel}/>}
+        {dndClass === 'Wizard' && <Wizard spellLevel={spellLevel}/>}
       </main>
     </body>
   );

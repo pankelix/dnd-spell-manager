@@ -1,6 +1,6 @@
 
 interface WarlockProps {
-
+    spellLevel: string
 }
 
 const Warlock: React.FC<WarlockProps> = (props) => {

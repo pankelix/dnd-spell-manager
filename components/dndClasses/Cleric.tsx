@@ -1,6 +1,6 @@
 
 interface ClericProps {
-
+    spellLevel: string
 }
 
 const Cleric: React.FC<ClericProps> = (props) => {

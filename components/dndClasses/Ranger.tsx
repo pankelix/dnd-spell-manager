@@ -1,6 +1,6 @@
 
 interface RangerProps {
-
+    spellLevel: string
 }
 
 const Ranger: React.FC<RangerProps> = (props) => {

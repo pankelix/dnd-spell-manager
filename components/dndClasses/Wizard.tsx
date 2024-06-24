@@ -1,6 +1,6 @@
 
 interface WizardProps {
-
+    spellLevel: string
 }
 
 const Wizard: React.FC<WizardProps> = (props) => {

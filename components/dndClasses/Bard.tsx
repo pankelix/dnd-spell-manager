@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import Card from "../Card";
 
 interface BardProps {
-
+    spellLevel: string
 }
 
 interface BardData {
@@ -15,7 +15,7 @@ const getBardData = async () => {
     return data
 }
 
-const Bard: React.FC<BardProps> = (props) => {
+const Bard: React.FC<BardProps> = ({ spellLevel }) => {
     const [bardData, setBardData] = useState<BardData | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
@@ -36,16 +36,17 @@ const Bard: React.FC<BardProps> = (props) => {
         fetchBardData()
     }, [])
 
-    if(loading) {
+    if (loading) {
         return <p>Loading...</p>
     }
 
-    if(error) {
+    if (error) {
         return <p>No data available, try again</p>
     }
 
     return <>
         <p>this is a Bard</p>
+        <p>{spellLevel}</p>
         {bardData && <p>{bardData.name}</p>}
         <Card />
     </>

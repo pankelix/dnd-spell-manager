@@ -1,6 +1,6 @@
 
 interface PaladinProps {
-
+    spellLevel: string
 }
 
 const Paladin: React.FC<PaladinProps> = (props) => {

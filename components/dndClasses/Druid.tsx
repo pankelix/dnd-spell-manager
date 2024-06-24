@@ -1,6 +1,6 @@
 
 interface DruidProps {
-
+    spellLevel: string
 }
 
 const Druid: React.FC<DruidProps> = (props) => {
