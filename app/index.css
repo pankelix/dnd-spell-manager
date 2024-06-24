@@ -4,10 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
     --foreground: #171717;
     --background: #737373;
-}
+} */
 
 @media (prefers-color-scheme: dark) {
     :root {
@@ -21,6 +21,11 @@
         font-family: 'Inter', sans-serif;
         color: var(--foreground);
         background: var(--background);
+    }
+
+    .light-mode {
+        --foreground: #171717;
+        --background: #fff;
     }
 
 }
