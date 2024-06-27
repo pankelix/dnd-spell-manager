@@ -9,10 +9,10 @@ export default function SunIcon({ isDarkMode, ...props }) {
             viewBox="0 0 24 24"
             fill="none"
             stroke={isDarkMode ? "#e5e5e5" : "#262626"}
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icon-tabler-outline icon-tabler-sun">
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="icon icon-tabler icon-tabler-outline icon-tabler-sun">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
             <path
