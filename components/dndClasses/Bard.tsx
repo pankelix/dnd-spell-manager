@@ -3,22 +3,26 @@ import Card from "../Card";
 
 interface BardProps {
     spellLevel: string
+    dndClass: string
 }
 
 interface BardData {
     name: string;
 }
 
-const getBardData = async () => {
-    const response = await fetch('https://www.dnd5eapi.co/api/classes/bard')
-    const data = await response.json()
-    return data
-}
 
-const Bard: React.FC<BardProps> = ({ spellLevel }) => {
+
+const Bard: React.FC<BardProps> = ({ spellLevel, dndClass }) => {
     const [bardData, setBardData] = useState<BardData | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
+    const [cards, setCards] = useState<number>(7)
+
+    const getBardData = async () => {
+        const response = await fetch('https://www.dnd5eapi.co/api/classes/bard')
+        const data = await response.json()
+        return data
+    }
 
 
     useEffect(() => {
