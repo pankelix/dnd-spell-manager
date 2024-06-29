@@ -36,6 +36,16 @@
         @screen md {
             width: 90%;
         }
+
+        .slick-prev, .slick-next {
+            z-index: 1;
+        }
+
+        .slick-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }
 

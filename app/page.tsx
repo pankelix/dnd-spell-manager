@@ -2,8 +2,6 @@
 
 import { useState } from "react"
 import { CoffeeIcon, GitHubIcon, MoonIcon, SunIcon } from "../components/icons"
-import { Bard, Cleric, Druid, Paladin, Ranger, Sorcerer, Warlock, Wizard } from '../components/dndClasses'
-import Link from "next/link"
 import Class from "@/components/dndClasses/Class"
 
 export default function Home() {
