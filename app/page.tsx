@@ -67,14 +67,6 @@ export default function Home() {
 
             <main>
                 {dndClass && <Class spellLevel={spellLevel} dndClass={dndClass} />}
-                {/* {dndClass === 'Bard' && <Bard spellLevel={spellLevel} dndClass={dndClass} />}
-                {dndClass === 'Cleric' && <Cleric spellLevel={spellLevel} />}
-                {dndClass === 'Druid' && <Druid spellLevel={spellLevel} />}
-                {dndClass === 'Paladin' && <Paladin spellLevel={spellLevel} />}
-                {dndClass === 'Ranger' && <Ranger spellLevel={spellLevel} />}
-                {dndClass === 'Sorcerer' && <Sorcerer spellLevel={spellLevel} />}
-                {dndClass === 'Warlock' && <Warlock spellLevel={spellLevel} />}
-                {dndClass === 'Wizard' && <Wizard spellLevel={spellLevel} />} */}
             </main>
         </div>
     )

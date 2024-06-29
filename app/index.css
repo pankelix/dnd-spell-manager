@@ -28,6 +28,15 @@
         --background: #fff;
     }
 
+    .slider-container {
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+
+        @screen md {
+            width: 90%;
+        }
+    }
 }
 
 @layer utilities {

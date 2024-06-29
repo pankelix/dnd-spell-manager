@@ -46,9 +46,10 @@ const Class: React.FC<ClassProps> = ({ spellLevel, dndClass }) => {
     }
 
     return <>
-        <p>this is a {dndClass}</p>
-        <p>{spellLevel}</p>
-        <Carousel spells={spells}/>
+        {/* <p>this is a {dndClass}</p>
+        <p>{spellLevel}</p> */}
+
+        {spells && <Carousel spells={spells} />}
     </>
 }
 
