@@ -30,10 +30,10 @@ const Card: React.FC<CardProps> = ({ spell }) => {
     ]
 
     return (
-        <div className="flex flex-col bg-white rounded-lg shadow-md">
-            <header className="flex items-center rounded-lg" style={{ backgroundColor: schoolColor }}>
+        <div className="flex flex-col bg-white rounded-lg shadow-md h-[70vh]">
+            <header className="flex items-center rounded-t-lg max-h-20" style={{ backgroundColor: schoolColor }}>
                 <div className="px-4 py-4 w-full flex items-center justify-center gap-2">
-                    <div className="flex items-center justify-center w-1/4 ">
+                    <div className="flex items-center justify-center">
                         {spell.school.index === "abjuration" && <AbjurationIcon className={'bg-white rounded-full'} fill={schoolColor} />}
                         {spell.school.index === "enchantment" && <EnchantmentIcon className={'bg-white rounded-full'} fill={schoolColor} />}
                         {spell.school.index === "conjuration" && <ConjurationIcon className={'bg-white rounded-full'} fill={schoolColor} />}
@@ -48,11 +48,6 @@ const Card: React.FC<CardProps> = ({ spell }) => {
                         <h1 className="text-xl font-bold text-white">{spell.name}</h1>
                         <h6 className="text-white">{spell.school.index.charAt(0).toUpperCase() + spell.school.index.slice(1)}</h6>
                     </div>
-
-                    {/* <div className="flex flex-col items-center justify-center w-1/10 p-2 text-white">
-                        <h2>LVL</h2>
-                        <h2 className="text-4xl">{spell.level}</h2>
-                    </div> */}
                 </div>
             </header>
 
@@ -65,26 +60,24 @@ const Card: React.FC<CardProps> = ({ spell }) => {
                         </div>
                         <div className="flex gap-3">
                             <h2 className="w-[40%] ">Duration</h2>
-                            <h2 className="font-bold">{spell.duration}</h2>
+                            <h2 className="font-bold">{spell.duration.replace('minute', 'min')}</h2>
                         </div>
                         <div className="flex gap-3">
                             <h2 className="w-[40%] ">Cast time</h2>
-                            <h2 className="font-bold">{spell.casting_time}.</h2>
+                            <h2 className="font-bold">{spell.casting_time}</h2>
                         </div>
                         <div className="flex pt-2">
                             <VerbalIcon fill={spell.components.includes('V') ? 'black' : 'lightgrey'} />
                             <SomaticIcon fill={spell.components.includes('S') ? 'black' : 'lightgrey'} />
-                        </div>
-                        <div className="flex justify-center">
                             <RitualIcon fill={spell.ritual ? 'black' : 'lightgrey'} />
-                            <ConcentrationIcon />
+                            <ConcentrationIcon fill={spell.concentration ? 'black' : 'lightgrey'} />
                         </div>
                     </div>
                     <div className="flex flex-col justify-between text-sm">
                         {dndClasses.map((cls) => {
                             const isClassIncluded = spell.classes.some(spellClass => spellClass.index === cls.toLowerCase())
                             return (
-                                <h2 key={cls} style={{ color: isClassIncluded ? schoolColor : 'lightgrey' }}>{cls}</h2>
+                                <h2 key={cls} style={{ color: isClassIncluded ? schoolColor : 'lightgrey', fontWeight: isClassIncluded ? 'bold' : '' }}>{cls}</h2>
                             )
                         })}
                     </div>
@@ -92,28 +85,32 @@ const Card: React.FC<CardProps> = ({ spell }) => {
 
                 {spell.material &&
                     <div className="px-2">
-                        <div style={{ background: schoolColor }} className="rounded-lg flex text-white items-center pr-4">
+                        <div style={{ background: schoolColor }} className="rounded-lg flex text-white items-center pr-4 max-h-15 overflow-y-auto">
                             <div className="w-1/6">
-                            <MaterialIcon fill={'white'} />
+                                <MaterialIcon fill={'white'} />
                             </div>
                             <p>{spell.material}</p>
                         </div>
                     </div>
                 }
-
-
-                <div className="w-fit flex flex-col justify-between px-4 py-1">
+                <div className="w-fit flex flex-col justify-between px-4">
                     <div>
-
-                        <p className="mt-2 h-[10vh] overflow-y-auto">{spell.desc.join(' ')}</p>
+                        <p className={`mt-2 overflow-y-auto ${spell.material ? spell.higher_level.length > 0 ? 'max-h-[18vh]' : 'max-h-[29vh]' : spell.higher_level.length > 0 ? 'max-h-[23vh]' : 'max-h-[34vh]'}`}
+                        >{spell.desc.join(' ')}</p>
                     </div>
-                    <div className="flex justify-between text-sm text-gray-600 mt-4">
-                        <span>Range: {spell.range}</span>
-                        <span>Level: {spell.level}</span>
-                    </div>
+                    {spell.higher_level.length !== 0 &&
+                        <div>
+                            <p className='mt-2 overflow-y-auto max-h-[10vh]'><strong>At higher levels:</strong> {spell.higher_level}</p>
+                        </div>}
                 </div>
-            </main>
-        </div>
+            </main >
+
+            {/* <footer className="px-4 pb-2">
+                <div className="flex justify-between text-sm text-gray-600 mt-4">
+                    <span>Level: {spell.level === 0 ? 'Cantrip' : spell.level}</span>
+                </div>
+            </footer > */}
+        </div >
     )
 }
 

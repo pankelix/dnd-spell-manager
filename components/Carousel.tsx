@@ -49,7 +49,7 @@ const Carousel: React.FC<CarouselProps> = ({ spells }) => {
         <div className="slider-container">
             <Slider {...settings} >
                 {spells && spells.map((spell, index) => (
-                    <div key={index} className="p-2">
+                    <div key={index} className="px-1">
                         <Card spell={spell} />
                     </div>
                 ))}
