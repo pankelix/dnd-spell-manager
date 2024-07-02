@@ -37,7 +37,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex gap-2">
-                    <a href="http://#" target="_blank" rel="noopener noreferrer">
+                    <a href="https://buymeacoffee.com/miguelariasdesign" target="_blank" rel="noopener noreferrer">
                         <CoffeeIcon isDarkMode={isDarkMode} />
                     </a>
                     <a href="https://github.com/pankelix/dnd-spell-manager" target="_blank" rel="noopener noreferrer">
