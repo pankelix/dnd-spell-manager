@@ -49,15 +49,15 @@ export default function Home() {
                 </div>
             </nav>
 
-            <nav className={`flex px-5 py-2 box-border gap-3 overflow-y-auto border-b ${isDarkMode ? 'border-neutral-800' : 'border-neutral-200'} items-center`}>
-                <a>Create</a>
+            <nav className={`flex lg:justify-between px-5 py-2 box-border gap-3 overflow-y-auto border-b ${isDarkMode ? 'border-neutral-800' : 'border-neutral-200'} items-center`}>
+                {/* <a>Create</a> */}
                 {dndClasses.map((cls) => (
                     <div style={{ backgroundColor: dndClass === cls ? (isDarkMode ? '#383838' : '#d5d5d5') : '', color: dndClass === cls ? (isDarkMode ? 'white' : '#383838') : '', padding: dndClass === cls ? '0.4rem' : '', borderRadius: dndClass === cls ? '0.375rem' : '' }} key={cls} onClick={() => handleDndClassClick(cls)}>{cls}</div>
                 ))}
             </nav>
 
             <nav className={`flex justify-between px-5 py-2 gap-3 overflow-y-auto border-b ${isDarkMode ? 'border-neutral-800' : 'border-neutral-200'} items-center`}>
-                <a>🔰</a>
+                {/* <a>🔰</a> */}
                 {spellLevels.map((lvl) => (
                     <div style={{ backgroundColor: spellLevel === lvl ? (isDarkMode ? '#383838' : '#d5d5d5') : '', color: spellLevel === lvl ? (isDarkMode ? 'white' : '#383838') : '', padding: spellLevel === lvl ? '0.4rem' : '', borderRadius: spellLevel === lvl ? '0.375rem' : '' }} key={lvl} onClick={() => handleSpellLevelClick(lvl)}>{lvl === '0' ? 'Cantrip' : lvl}</div>
                 ))}
