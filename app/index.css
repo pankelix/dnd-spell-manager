@@ -6,7 +6,7 @@
 
 /* :root {
     --foreground: #171717;
-    --background: #737373;
+    --background: #fff;
 } */
 
 @media (prefers-color-scheme: dark) {
@@ -16,16 +16,12 @@
     }
 }
 
+
 @layer components {
     body {
         font-family: 'Inter', sans-serif;
         color: var(--foreground);
         background: var(--background);
-    }
-
-    .light-mode {
-        --foreground: #171717;
-        --background: #fff;
     }
 
     .slider-container {
@@ -37,7 +33,8 @@
             width: 90%;
         }
 
-        .slick-prev, .slick-next {
+        .slick-prev,
+        .slick-next {
             z-index: 1;
         }
 

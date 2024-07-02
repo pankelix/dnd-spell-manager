@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import Card from "../Card";
 import { Spells } from '@/app/types';
 
 import { getSpellsByLevel } from '../../api/getSpellsByLevel'

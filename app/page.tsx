@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { CoffeeIcon, GitHubIcon, MoonIcon, SunIcon } from "../components/icons"
 import Class from "@/components/dndClasses/Class"
 
@@ -17,6 +17,14 @@ export default function Home() {
     const [spellLevel, setSpellLevel] = useState('0')
     const [isDarkMode, setIsDarkMode] = useState<boolean>(true)
 
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    }, [isDarkMode])
+
     const handleDndClassClick = (chosenClass: string) => {
         setDndClass(chosenClass)
     }
@@ -30,10 +38,10 @@ export default function Home() {
     }
 
     return (
-        <div className={isDarkMode ? '' : 'light-mode'}>
-            <nav className={`flex w-screen justify-between px-5 py-3 border-b ${isDarkMode ? 'border-neutral-800' : 'border-neutral-200'}`}>
+        <div className="dark:bg-neutral-800 bg-white h-[100vh]">
+            <nav className='flex w-screen justify-between px-5 py-3 border-b dark:border-neutral-800 border-neutral-200'>
                 <div>
-                    <p className="font-bold">DnD Spell Manager</p>
+                    <p className="font-bold dark:text-neutral-200 text-neutral-800">DnD Spell Manager</p>
                 </div>
 
                 <div className="flex gap-2">
@@ -49,14 +57,14 @@ export default function Home() {
                 </div>
             </nav>
 
-            <nav className={`flex lg:justify-between px-5 py-2 box-border gap-3 overflow-y-auto border-b ${isDarkMode ? 'border-neutral-800' : 'border-neutral-200'} items-center`}>
+            <nav className={'flex lg:justify-between px-5 py-2 box-border gap-3 overflow-y-auto border-b dark:border-neutral-700 border-neutral-200 items-center'}>
                 {/* <a>Create</a> */}
                 {dndClasses.map((cls) => (
                     <div style={{ backgroundColor: dndClass === cls ? (isDarkMode ? '#383838' : '#d5d5d5') : '', color: dndClass === cls ? (isDarkMode ? 'white' : '#383838') : '', padding: dndClass === cls ? '0.4rem' : '', borderRadius: dndClass === cls ? '0.375rem' : '' }} key={cls} onClick={() => handleDndClassClick(cls)}>{cls}</div>
                 ))}
             </nav>
 
-            <nav className={`flex justify-between px-5 py-2 gap-3 overflow-y-auto border-b ${isDarkMode ? 'border-neutral-800' : 'border-neutral-200'} items-center`}>
+            <nav className='flex justify-between px-5 py-2 gap-3 overflow-y-auto border-b dark:border-neutral-700 border-neutral-200 items-center'>
                 {/* <a>🔰</a> */}
                 {spellLevels.map((lvl) => (
                     <div style={{ backgroundColor: spellLevel === lvl ? (isDarkMode ? '#383838' : '#d5d5d5') : '', color: spellLevel === lvl ? (isDarkMode ? 'white' : '#383838') : '', padding: spellLevel === lvl ? '0.4rem' : '', borderRadius: spellLevel === lvl ? '0.375rem' : '' }} key={lvl} onClick={() => handleSpellLevelClick(lvl)}>{lvl === '0' ? 'Cantrip' : lvl}</div>
@@ -66,6 +74,6 @@ export default function Home() {
             <main className="pt-4">
                 {dndClass && <Class spellLevel={spellLevel} dndClass={dndClass} />}
             </main>
-        </div>
+        </div >
     )
 }
