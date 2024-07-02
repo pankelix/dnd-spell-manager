@@ -30,7 +30,7 @@ const Card: React.FC<CardProps> = ({ spell }) => {
     ]
 
     return (
-        <div className="flex flex-col bg-white rounded-lg shadow-md h-[70vh]">
+        <div className="flex flex-col bg-white rounded-lg h-[70vh] border-2 border-neutral-200">
             <header className="flex items-center rounded-t-lg max-h-20" style={{ backgroundColor: schoolColor }}>
                 <div className="px-4 py-4 w-full flex items-center justify-center gap-2">
                     <div className="flex items-center justify-center">
