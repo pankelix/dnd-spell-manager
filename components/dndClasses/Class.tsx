@@ -10,7 +10,7 @@ interface ClassProps {
 }
 
 const Class: React.FC<ClassProps> = ({ spellLevel, dndClass }) => {
-    const [spells, setSpells] = useState<Spells | null>(null)
+    const [spells, setSpells] = useState<Spells>([])
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
 
