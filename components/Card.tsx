@@ -84,32 +84,26 @@ const Card: React.FC<CardProps> = ({ spell }) => {
                 </div>
 
                 {spell.material &&
-                    <div className="px-2">
-                        <div style={{ background: schoolColor }} className="rounded-lg flex text-white items-center pr-4 max-h-15 overflow-y-auto">
-                            <div className="w-1/6">
-                                <MaterialIcon fill={'white'} />
-                            </div>
-                            <p>{spell.material}</p>
+                    <div className="px-2 flex items-center">
+                        <div className="w-1/7">
+                            <MaterialIcon fill={schoolColor} />
+                        </div>
+                        <div style={{ background: schoolColor }} className="w-full mr-2 rounded-lg text-white items-center p-2 h-14 overflow-y-auto">
+                            <p className="text-sm">{spell.material}</p>
                         </div>
                     </div>
                 }
                 <div className="w-fit flex flex-col justify-between px-4">
                     <div>
-                        <p className={`mt-2 overflow-y-auto ${spell.material ? spell.higher_level.length > 0 ? 'max-h-[18vh]' : 'max-h-[29vh]' : spell.higher_level.length > 0 ? 'max-h-[23vh]' : 'max-h-[34vh]'}`}
+                        <p className={`text-sm mt-2 overflow-y-auto ${spell.material ? spell.higher_level.length > 0 ? 'max-h-[18vh]' : 'max-h-[29vh]' : spell.higher_level.length > 0 ? 'max-h-[23vh]' : 'max-h-[34vh]'}`}
                         >{spell.desc.join(' ')}</p>
                     </div>
                     {spell.higher_level.length !== 0 &&
                         <div>
-                            <p className='mt-2 overflow-y-auto max-h-[10vh]'><strong>At higher levels:</strong> {spell.higher_level}</p>
+                            <p className='text-sm mt-2 overflow-y-auto max-h-[10vh]'><strong>At higher levels:</strong> {spell.higher_level}</p>
                         </div>}
                 </div>
             </main >
-
-            {/* <footer className="px-4 pb-2">
-                <div className="flex justify-between text-sm text-gray-600 mt-4">
-                    <span>Level: {spell.level === 0 ? 'Cantrip' : spell.level}</span>
-                </div>
-            </footer > */}
         </div >
     )
 }
