@@ -13,8 +13,6 @@ const Class: React.FC<ClassProps> = ({ spellLevel, dndClass }) => {
     const [spells, setSpells] = useState<Spells | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
-    /* const [cards, setCards] = useState<number>(7) */
-
 
     useEffect(() => {
         const fetchSpells = async () => {
@@ -45,9 +43,6 @@ const Class: React.FC<ClassProps> = ({ spellLevel, dndClass }) => {
     }
 
     return <>
-        {/* <p>this is a {dndClass}</p>
-        <p>{spellLevel}</p> */}
-
         {spells && <Carousel spells={spells} />}
     </>
 }
