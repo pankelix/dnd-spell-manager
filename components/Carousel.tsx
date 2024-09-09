@@ -11,7 +11,7 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ spells }) => {
     const settings = {
-        dots: false,
+        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 4,
@@ -21,7 +21,7 @@ const Carousel: React.FC<CarouselProps> = ({ spells }) => {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                     slidesToScroll: 1,
                     infinite: true,
                     dots: true
@@ -32,14 +32,16 @@ const Carousel: React.FC<CarouselProps> = ({ spells }) => {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                    initialSlide: 2
+                    initialSlide: 2,
+                    dots: true
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    dots: true
                 }
             }
         ]
