@@ -18,7 +18,7 @@ export default function Home() {
     const [spellLevel, setSpellLevel] = useState('0')
     const [isDarkMode, setIsDarkMode] = useState<boolean>(true)
     const [searchQuery, setSearchQuery] = useState('')
-    const [inputValue, setInputValue] = useState('') // Valor del input sin filtrar hasta que se presione Enter
+    const [inputValue, setInputValue] = useState('')
 
     useEffect(() => {
         if (isDarkMode) {

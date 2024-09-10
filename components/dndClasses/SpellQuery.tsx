@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { Spells } from '@/app/types';
+import { Spells } from '@/app/types'
 
 import { getSpellsByName } from '../../api/getSpellsByName'
-import Carousel from "../Carousel";
+import Carousel from "../Carousel"
 
 interface SpellQueryProps {
     searchQuery: string
@@ -20,11 +20,13 @@ const SpellQuery: React.FC<SpellQueryProps> = ({ searchQuery }) => {
             try {
                 const queriedSpells: Spells = await getSpellsByName(searchQuery)
 
+                console.log(queriedSpells)
                 if (queriedSpells && queriedSpells.length > 0) {
-                    setSpells(queriedSpells);
+                    setSpells(queriedSpells)
                 } else {
-                    setError('No spells found for this search.');
+                    setError('No spells found for this search.')
                 }
+
 
                 setLoading(false)
             } catch (error) {
@@ -33,9 +35,8 @@ const SpellQuery: React.FC<SpellQueryProps> = ({ searchQuery }) => {
                 setLoading(false)
             }
         }
-        if (searchQuery) {
-            fetchSpells()
-        }
+
+        fetchSpells()
     }, [searchQuery])
 
     if (loading) {

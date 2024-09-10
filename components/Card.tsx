@@ -19,8 +19,8 @@ const schoolColors: { [key: string]: string } = {
 };
 
 const getSchoolColor = (school: string): string => {
-    return schoolColors[school.toLowerCase()] || "black";
-};
+    return schoolColors[school.toLowerCase()] || "black"
+}
 
 const Card: React.FC<CardProps> = ({ spell }) => {
     const schoolColor = getSchoolColor(spell.school.index)

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { Spells } from '@/app/types';
+import { Spells } from '@/app/types'
 
 import { getSpellsByLevel } from '../../api/getSpellsByLevel'
-import Carousel from "../Carousel";
+import Carousel from "../Carousel"
 
 interface ClassProps {
     spellLevel: string
@@ -23,7 +23,6 @@ const Class: React.FC<ClassProps> = ({ spellLevel, dndClass }) => {
                 const filteredSpellsByClass = allSpells.filter(spell => spell.classes.some(cls => cls.index === dndClass.toLowerCase()))
 
                 setSpells(filteredSpellsByClass)
-                console.log(filteredSpellsByClass)
                 setLoading(false)
             } catch (error) {
                 setError('Failed to fetch Spells')
