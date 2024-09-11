@@ -14,7 +14,6 @@ const Carousel: React.FC<CarouselProps> = ({ spells }) => {
     const isInfinite = spells.length > slidesToShow
 
     const settings = {
-        dots: spells.length > slidesToShow,
         infinite: isInfinite,
         speed: 500,
         slidesToShow: Math.min(slidesToShow, spells.length),
@@ -27,7 +26,6 @@ const Carousel: React.FC<CarouselProps> = ({ spells }) => {
                     slidesToShow: Math.min(2, spells.length),
                     slidesToScroll: spells.length > 2 ? 1 : 1,
                     infinite: spells.length > 2,
-                    dots: spells.length > 2
                 }
             },
             {
@@ -36,7 +34,6 @@ const Carousel: React.FC<CarouselProps> = ({ spells }) => {
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     infinite: spells.length > 1,
-                    dots: spells.length > 1
                 }
             }
         ]
