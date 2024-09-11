@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react"
 import { Spell, Spells } from '@/app/types'
 import Carousel from "../Carousel"
 
-interface SavedProps {
+interface BookmarkedProps {
     spellLevel: string
-    saved: boolean
+    bookmarked: boolean
 }
 
-const Saved: React.FC<SavedProps> = ({ spellLevel, saved }) => {
+const Bookmarked: React.FC<BookmarkedProps> = ({ spellLevel, bookmarked }) => {
     const [spells, setSpells] = useState<Spells>([])
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
@@ -25,7 +25,7 @@ const Saved: React.FC<SavedProps> = ({ spellLevel, saved }) => {
         } finally {
             setLoading(false)
         }
-    }, [spellLevel, saved])
+    }, [spellLevel, bookmarked])
 
     if (loading) {
         return <p className="text-center pt-10">Loading...</p>
@@ -38,8 +38,8 @@ const Saved: React.FC<SavedProps> = ({ spellLevel, saved }) => {
     return <>
         {spells.length > 0
             ? <Carousel spells={spells} />
-            : <h3 className="text-center pt-10">{'You have no spells of level ' + (spellLevel === '0' ? 'Cantrip' : spellLevel) + ' saved'}</h3>}
+            : <h3 className="text-center pt-10">{'You have no spells of level ' + (spellLevel === '0' ? 'Cantrip' : spellLevel) + ' bookmarked'}</h3>}
     </>
 }
 
-export default Saved
+export default Bookmarked
