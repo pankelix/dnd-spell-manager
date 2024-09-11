@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Spell } from "@/app/types"
 import { AbjurationIcon, EnchantmentIcon, ConjurationIcon, IllusionIcon, TransmutationIcon, DivinationIcon, NecromancyIcon, EvocationIcon } from '../components/icons/dndSchools'
-import { ConcentrationIcon, MaterialIcon, RitualIcon, SomaticIcon, VerbalIcon } from '../components/icons/cardIcons'
+import { BookmarkIcon, ConcentrationIcon, MaterialIcon, RitualIcon, SomaticIcon, VerbalIcon } from '../components/icons/cardIcons'
 
 interface CardProps {
     spell: Spell
@@ -24,13 +24,30 @@ const getSchoolColor = (school: string): string => {
 
 const Card: React.FC<CardProps> = ({ spell }) => {
     const schoolColor = getSchoolColor(spell.school.index)
+    const dndClasses = ['Bard', 'Cleric', 'Druid', 'Paladin', 'Ranger', 'Sorcerer', 'Warlock', 'Wizard']
+    const [isBookmarked, setIsBookmarked] = useState(false)
 
-    const dndClasses = [
-        'Bard', 'Cleric', 'Druid', 'Paladin', 'Ranger', 'Sorcerer', 'Warlock', 'Wizard'
-    ]
+    useEffect(() => {
+        const storedBookmarks = JSON.parse(localStorage.getItem('bookmarkedSpells') || '[]')
+        setIsBookmarked(storedBookmarks.some((s: Spell) => s.index === spell.index))
+    }, [spell.index])
+
+    const handleBookmarkClick = () => {
+        const storedBookmarks = JSON.parse(localStorage.getItem('bookmarkedSpells') || '[]')
+
+        if (isBookmarked) {
+            const updateBookmarks = storedBookmarks.filter((s: Spell) => s.index !== spell.index)
+            localStorage.setItem('bookmarkedSpells', JSON.stringify(updateBookmarks))
+        } else {
+            storedBookmarks.push(spell)
+            localStorage.setItem('bookmarkedSpells', JSON.stringify(storedBookmarks))
+        }
+
+        setIsBookmarked(!isBookmarked)
+    }
 
     return (
-        <div className="flex flex-col bg-white rounded-lg h-[70vh] dark:border-0 border-2 border-neutral-200">
+        <div className="relative flex flex-col bg-white rounded-lg h-[70vh] dark:border-0 border-2 border-neutral-200">
             <header className="flex items-center rounded-t-lg max-h-20" style={{ backgroundColor: schoolColor }}>
                 <div className="px-4 py-4 w-full flex items-center justify-center gap-2">
                     <div className="flex items-center justify-center">
@@ -102,6 +119,10 @@ const Card: React.FC<CardProps> = ({ spell }) => {
                         <div>
                             <p className='text-sm mt-2 overflow-y-auto max-h-[10vh]'><strong>At higher levels:</strong> {spell.higher_level}</p>
                         </div>}
+                </div>
+
+                <div className="absolute bottom-2 right-2">
+                    <BookmarkIcon onClick={handleBookmarkClick} fill={isBookmarked ? schoolColor : 'lightgrey'} strokeWidth={'0'} />
                 </div>
             </main >
         </div >

@@ -3,6 +3,7 @@ import MaterialIcon from './MaterialIcon'
 import RitualIcon from './RitualIcon'
 import SomaticIcon from './SomaticIcon'
 import VerbalIcon from './VerbalIcon'
+import BookmarkIcon from './BookmarkIcon'
 
 export {
     ConcentrationIcon,
@@ -10,4 +11,5 @@ export {
     RitualIcon,
     SomaticIcon,
     VerbalIcon,
+    BookmarkIcon,
 }

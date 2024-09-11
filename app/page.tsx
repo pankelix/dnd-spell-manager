@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react"
 import { CoffeeIcon, GitHubIcon, MoonIcon, SunIcon, SearchIcon } from "../components/icons"
 import Class from "@/components/dndClasses/Class"
 import SpellQuery from "@/components/dndClasses/SpellQuery"
+import Bookmarked from "@/components/dndClasses/Bookmarked"
+import { BookmarkIcon } from "@/components/icons/cardIcons"
 
 export default function Home() {
     const dndClasses = [
@@ -19,6 +21,7 @@ export default function Home() {
     const [isDarkMode, setIsDarkMode] = useState<boolean>(true)
     const [searchQuery, setSearchQuery] = useState('')
     const [inputValue, setInputValue] = useState('')
+    const [bookmarked, setBookmarked] = useState(false)
 
     useEffect(() => {
         if (isDarkMode) {
@@ -30,6 +33,7 @@ export default function Home() {
 
     const handleDndClassClick = (chosenClass: string) => {
         setDndClass(chosenClass)
+        setBookmarked(false)
     }
 
     const handleSpellLevelClick = (level: string) => {
@@ -46,11 +50,23 @@ export default function Home() {
         }
     }
 
+    const handleBookmarkedClick = () => {
+        setBookmarked(true)
+    }
+
+    const handleTitleClick = () => {
+        setDndClass('Bard')
+        setSpellLevel('0')
+        setSearchQuery('')
+        setInputValue('')
+        setBookmarked(false)
+    }
+
     return (
         <div className="dark:bg-neutral-800 bg-white h-[100vh]">
             <nav className='flex w-screen justify-between px-5 py-3 border-b dark:border-neutral-800 border-neutral-200'>
                 <div className="flex gap-2">
-                    <p className="font-bold dark:text-neutral-200 text-neutral-800">DnD Spell Manager</p>
+                    <p onClick={handleTitleClick} className="font-bold dark:text-neutral-200 text-neutral-800">DnD Spell Manager</p>
                 </div>
 
                 <div className="flex gap-2">
@@ -81,8 +97,11 @@ export default function Home() {
             </nav>
 
             {searchQuery === '' && <nav className='flex md:justify-between lg:justify-around px-5 py-2 box-border gap-3 overflow-y-auto border-b dark:border-neutral-700 border-neutral-200 items-center'>
+                <div style={{ backgroundColor: bookmarked === true ? (isDarkMode ? '#383838' : '#d5d5d5') : '', color: bookmarked === true ? (isDarkMode ? 'white' : '#383838') : (isDarkMode ? '#d5d5d5' : '#383838'), padding: bookmarked === true ? '0.4rem' : '', borderRadius: bookmarked === true ? '0.375rem' : '' }} onClick={() => handleBookmarkedClick()}>
+                    <BookmarkIcon isDarkMode={isDarkMode} stroke={bookmarked === true ? (isDarkMode ? 'white' : '#383838') : (isDarkMode ? '#d5d5d5' : '#383838')} fill={bookmarked === true ? (isDarkMode ? '#383838' : '#d5d5d5') : (isDarkMode ? '#262626' : 'white')} />
+                </div>
                 {dndClasses.map((cls) => (
-                    <div style={{ backgroundColor: dndClass === cls ? (isDarkMode ? '#383838' : '#d5d5d5') : '', color: dndClass === cls ? (isDarkMode ? 'white' : '#383838') : (isDarkMode ? '#d5d5d5' : '#383838'), padding: dndClass === cls ? '0.4rem' : '', borderRadius: dndClass === cls ? '0.375rem' : '' }} key={cls} onClick={() => handleDndClassClick(cls)}>{cls}</div>
+                    <div style={{ backgroundColor: dndClass === cls && bookmarked === false ? (isDarkMode ? '#383838' : '#d5d5d5') : '', color: dndClass === cls && bookmarked === false ? (isDarkMode ? 'white' : '#383838') : (isDarkMode ? '#d5d5d5' : '#383838'), padding: dndClass === cls && bookmarked === false ? '0.4rem' : '', borderRadius: dndClass === cls && bookmarked === false ? '0.375rem' : '' }} key={cls} onClick={() => handleDndClassClick(cls)}>{cls}</div>
                 ))}
             </nav>}
 
@@ -93,8 +112,9 @@ export default function Home() {
             </nav>}
 
             <main className="pt-4">
-                {searchQuery === '' && <Class spellLevel={spellLevel} dndClass={dndClass} />}
-                {searchQuery !== '' && <SpellQuery searchQuery={searchQuery} />}
+                {searchQuery === '' && bookmarked === false && <Class spellLevel={spellLevel} dndClass={dndClass} />}
+                {searchQuery !== '' && bookmarked === false && <SpellQuery searchQuery={searchQuery} />}
+                {bookmarked === true && <Bookmarked spellLevel={spellLevel} bookmarked={bookmarked}  />}
             </main>
         </div >
     )
