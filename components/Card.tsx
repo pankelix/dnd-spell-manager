@@ -16,7 +16,7 @@ const schoolColors: { [key: string]: string } = {
     divination: "#d7cb42",
     necromancy: "#804539",
     evocation: "#b3263a",
-};
+}
 
 const getSchoolColor = (school: string): string => {
     return schoolColors[school.toLowerCase()] || "black"

@@ -16,12 +16,22 @@ export default function Home() {
         '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
     ]
 
-    const [dndClass, setDndClass] = useState('Bard')
-    const [spellLevel, setSpellLevel] = useState('0')
+    // Leer dndClass y spellLevel del localStorage o usar valores por defecto
+    const [dndClass, setDndClass] = useState<string>(() => localStorage.getItem('dndClass') || 'Bard')
+    const [spellLevel, setSpellLevel] = useState<string>(() => localStorage.getItem('spellLevel') || '0')
     const [isDarkMode, setIsDarkMode] = useState<boolean>(true)
     const [searchQuery, setSearchQuery] = useState('')
     const [inputValue, setInputValue] = useState('')
     const [bookmarked, setBookmarked] = useState(false)
+
+    // Guardar dndClass y spellLevel en localStorage cada vez que cambien
+    useEffect(() => {
+        localStorage.setItem('dndClass', dndClass)
+    }, [dndClass])
+
+    useEffect(() => {
+        localStorage.setItem('spellLevel', spellLevel)
+    }, [spellLevel])
 
     useEffect(() => {
         if (isDarkMode) {
@@ -116,7 +126,7 @@ export default function Home() {
             <main className="pt-4">
                 {searchQuery === '' && bookmarked === false && <Class spellLevel={spellLevel} dndClass={dndClass} isDarkMode={isDarkMode}/>}
                 {searchQuery !== '' && bookmarked === false && <SpellQuery searchQuery={searchQuery} isDarkMode={isDarkMode}/>}
-                {bookmarked === true && <Bookmarked spellLevel={spellLevel} bookmarked={bookmarked}  isDarkMode={isDarkMode}/>}
+                {bookmarked === true && <Bookmarked spellLevel={spellLevel} bookmarked={bookmarked} isDarkMode={isDarkMode}/>}
             </main>
         </div >
     )
