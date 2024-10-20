@@ -47,11 +47,13 @@ export default function Home() {
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             setSearchQuery(inputValue)
+            setBookmarked(false)
         }
     }
 
     const handleBookmarkedClick = () => {
         setBookmarked(true)
+        setSearchQuery('')
     }
 
     const handleTitleClick = () => {

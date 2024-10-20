@@ -28,7 +28,7 @@ const Bookmarked: React.FC<BookmarkedProps> = ({ spellLevel, bookmarked }) => {
     }, [spellLevel, bookmarked])
 
     if (loading) {
-        return <p className="text-center pt-10">Loading...</p>
+        return <p className="text-center pt-10 dark:text-neutral-200">Loading...</p>
     }
 
     if (error) {
@@ -38,7 +38,7 @@ const Bookmarked: React.FC<BookmarkedProps> = ({ spellLevel, bookmarked }) => {
     return <>
         {spells.length > 0
             ? <Carousel spells={spells} />
-            : <h3 className="text-center pt-10">{'You have no spells of level ' + (spellLevel === '0' ? 'Cantrip' : spellLevel) + ' bookmarked'}</h3>}
+            : <h3 className="text-center pt-10 dark:text-neutral-200">{'You have no spells of level ' + (spellLevel === '0' ? 'Cantrip' : spellLevel) + ' bookmarked'}</h3>}
     </>
 }
 

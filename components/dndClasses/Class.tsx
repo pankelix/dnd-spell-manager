@@ -34,7 +34,7 @@ const Class: React.FC<ClassProps> = ({ spellLevel, dndClass }) => {
     }, [spellLevel, dndClass])
 
     if (loading) {
-        return <p className="text-center pt-10">Loading...</p>
+        return <p className="text-center pt-10 dark:text-neutral-200">Loading...</p>
     }
 
     if (error) {
@@ -44,7 +44,7 @@ const Class: React.FC<ClassProps> = ({ spellLevel, dndClass }) => {
     return <>
         {spells.length > 0
             ? <Carousel spells={spells} />
-            : <h3 className="text-center pt-10">{'A ' + dndClass + ' has not spells of level ' + (spellLevel === '0' ? 'Cantrip' : spellLevel)}</h3>}
+            : <h3 className="text-center pt-10 dark:text-neutral-200">{'A ' + dndClass + ' has not spells of level ' + (spellLevel === '0' ? 'Cantrip' : spellLevel)}</h3>}
     </>
 }
 
