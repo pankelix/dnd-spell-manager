@@ -36,7 +36,6 @@ const Class: React.FC<ClassProps> = ({ spellLevel, dndClass, isDarkMode }) => {
     }, [spellLevel, dndClass])
 
     if (loading) {
-        /* return <p className="text-center pt-10 dark:text-neutral-200">Loading...</p> */
         return <Loading isDarkMode={isDarkMode}/>
     }
 

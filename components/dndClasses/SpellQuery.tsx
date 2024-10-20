@@ -42,7 +42,6 @@ const SpellQuery: React.FC<SpellQueryProps> = ({ searchQuery, isDarkMode }) => {
     }, [searchQuery])
 
     if (loading) {
-        /* return <p className="text-center pt-10 dark:text-neutral-200">Loading...</p> */
         return <Loading isDarkMode={isDarkMode}/>
     }
 

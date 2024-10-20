@@ -30,7 +30,6 @@ const Bookmarked: React.FC<BookmarkedProps> = ({ spellLevel, bookmarked, isDarkM
     }, [spellLevel, bookmarked])
 
     if (loading) {
-       /*  return <p className="text-center pt-10 dark:text-neutral-200">Loading...</p> */
        return <Loading isDarkMode={isDarkMode}/>
     }
 
