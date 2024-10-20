@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react"
 import { Spells } from '@/app/types'
 
-import { getSpellsByName } from '../../api/getSpellsByName'
-import Carousel from "../Carousel"
+import { getSpellsByName } from '@/api/getSpellsByName'
+import Carousel from "@/components/Carousel"
+import Loading from "@/components/Loading"
 
 interface SpellQueryProps {
     searchQuery: string
+    isDarkMode: boolean
 }
 
-const SpellQuery: React.FC<SpellQueryProps> = ({ searchQuery }) => {
+const SpellQuery: React.FC<SpellQueryProps> = ({ searchQuery, isDarkMode }) => {
     const [spells, setSpells] = useState<Spells>([])
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
@@ -40,7 +42,8 @@ const SpellQuery: React.FC<SpellQueryProps> = ({ searchQuery }) => {
     }, [searchQuery])
 
     if (loading) {
-        return <p className="text-center pt-10">Loading...</p>
+        /* return <p className="text-center pt-10 dark:text-neutral-200">Loading...</p> */
+        return <Loading isDarkMode={isDarkMode}/>
     }
 
     if (error) {

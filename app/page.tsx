@@ -114,9 +114,9 @@ export default function Home() {
             </nav>}
 
             <main className="pt-4">
-                {searchQuery === '' && bookmarked === false && <Class spellLevel={spellLevel} dndClass={dndClass} />}
-                {searchQuery !== '' && bookmarked === false && <SpellQuery searchQuery={searchQuery} />}
-                {bookmarked === true && <Bookmarked spellLevel={spellLevel} bookmarked={bookmarked}  />}
+                {searchQuery === '' && bookmarked === false && <Class spellLevel={spellLevel} dndClass={dndClass} isDarkMode={isDarkMode}/>}
+                {searchQuery !== '' && bookmarked === false && <SpellQuery searchQuery={searchQuery} isDarkMode={isDarkMode}/>}
+                {bookmarked === true && <Bookmarked spellLevel={spellLevel} bookmarked={bookmarked}  isDarkMode={isDarkMode}/>}
             </main>
         </div >
     )

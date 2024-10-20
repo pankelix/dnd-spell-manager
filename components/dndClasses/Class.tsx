@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react"
 import { Spells } from '@/app/types'
 
-import { getSpellsByLevel } from '../../api/getSpellsByLevel'
-import Carousel from "../Carousel"
+import { getSpellsByLevel } from '@/api/getSpellsByLevel'
+import Carousel from "@/components/Carousel"
+import Loading from "@/components/Loading"
 
 interface ClassProps {
     spellLevel: string
     dndClass: string
+    isDarkMode: boolean
 }
 
-const Class: React.FC<ClassProps> = ({ spellLevel, dndClass }) => {
+const Class: React.FC<ClassProps> = ({ spellLevel, dndClass, isDarkMode }) => {
     const [spells, setSpells] = useState<Spells>([])
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
@@ -34,7 +36,8 @@ const Class: React.FC<ClassProps> = ({ spellLevel, dndClass }) => {
     }, [spellLevel, dndClass])
 
     if (loading) {
-        return <p className="text-center pt-10 dark:text-neutral-200">Loading...</p>
+        /* return <p className="text-center pt-10 dark:text-neutral-200">Loading...</p> */
+        return <Loading isDarkMode={isDarkMode}/>
     }
 
     if (error) {

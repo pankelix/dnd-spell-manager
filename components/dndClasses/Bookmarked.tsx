@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { Spell, Spells } from '@/app/types'
-import Carousel from "../Carousel"
+import Carousel from "@/components/Carousel"
+import Loading from "@/components/Loading"
 
 interface BookmarkedProps {
     spellLevel: string
     bookmarked: boolean
+    isDarkMode: boolean
 }
 
-const Bookmarked: React.FC<BookmarkedProps> = ({ spellLevel, bookmarked }) => {
+const Bookmarked: React.FC<BookmarkedProps> = ({ spellLevel, bookmarked, isDarkMode }) => {
     const [spells, setSpells] = useState<Spells>([])
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
@@ -28,7 +30,8 @@ const Bookmarked: React.FC<BookmarkedProps> = ({ spellLevel, bookmarked }) => {
     }, [spellLevel, bookmarked])
 
     if (loading) {
-        return <p className="text-center pt-10 dark:text-neutral-200">Loading...</p>
+       /*  return <p className="text-center pt-10 dark:text-neutral-200">Loading...</p> */
+       return <Loading isDarkMode={isDarkMode}/>
     }
 
     if (error) {
