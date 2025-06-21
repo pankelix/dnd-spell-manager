@@ -1,7 +1,7 @@
 const BASE_URL = 'https://www.dnd5eapi.co'
 
 export async function getSpellsByLevel(spellLevel) {
-    const spellIndexes = await fetch(BASE_URL + `/api/spells?level=${spellLevel}`).then((response) =>
+    const spellIndexes = await fetch(BASE_URL + `/api/2014/spells?level=${spellLevel}`).then((response) =>
         response.json()
     )
     return Promise.all(

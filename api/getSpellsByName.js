@@ -1,7 +1,7 @@
 const BASE_URL = 'https://www.dnd5eapi.co'
 
 export async function getSpellsByName(query) {
-    const spellIndexes = await fetch(BASE_URL + '/api/spells').then((response) =>
+    const spellIndexes = await fetch(BASE_URL + '/api/2014/spells').then((response) =>
         response.json()
     )
 
